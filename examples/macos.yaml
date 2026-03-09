@@ -1,0 +1,18 @@
+# Example manifest for a macOS machine
+# Copy to /etc/catalog/manifest.yaml and customize
+
+node:
+  name: my-mac
+
+services:
+  - name: ollama
+    port: 11434
+    protocol: http
+    health: /api/tags
+    description: "Ollama local LLM inference"
+
+  # - name: mlx-server
+  #   port: 8081
+  #   protocol: http
+  #   health: /v1/models
+  #   description: "MLX LLM inference server"

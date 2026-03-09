@@ -1,0 +1,32 @@
+# Example manifest for a Linux VPS
+# Copy to /etc/catalog/manifest.yaml and customize
+
+node:
+  name: my-vps
+
+# Ports to exclude from auto-discovery
+ignore_ports:
+  - 53     # systemd-resolved
+  - 22     # SSH
+
+services:
+  - name: nginx
+    port: 80
+    protocol: http
+    description: "Web server / reverse proxy"
+
+  - name: nginx-tls
+    port: 443
+    protocol: https
+    description: "Web server (TLS)"
+
+  - name: my-app
+    port: 3000
+    protocol: http
+    health: /health
+    description: "Main application"
+
+  # - name: postgres
+  #   port: 5432
+  #   protocol: tcp
+  #   description: "PostgreSQL database"
